@@ -23,9 +23,9 @@ df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
 page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "Crystal Ball",])
 ##Introduction Page
-if page == "☺️ Introduction":
+if page == "Introduction":
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
-    st.header("Introduction")
+    st.header("☺️ Introduction")
 
     st.subheader("🧠 Objective")
     st.write("Sometimes you don’t even know why you’re feeling low, only that something needs to change. This app helps you pause, reflect, and uncover the patterns beneath your mood by organizing your daily habits—sleep, social media use, movement, and more—into clear, meaningful insights. As you start to see how your choices shape your well-being, you realize you have far more control than you thought.")
