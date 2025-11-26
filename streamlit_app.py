@@ -24,25 +24,58 @@ df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "Crystal Ball",])
 ##Introduction Page
 if page == "Introduction":
-    st.markdown("""
+    st
+
+st.markdown("""
 <style>
-@keyframes fall {
-  0%   { transform: translateY(-50px); opacity: 0; }
-  100% { transform: translateY(300px); opacity: 1; }
+
+body {
+    overflow: hidden;
 }
 
-.petal {
-  position: relative;
-  font-size: 40px;
-  animation: fall 4s linear infinite;
-  margin-right: 10px;
+/* Container covers entire screen */
+.falling-flowers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* allows clicking through */
+    z-index: -1;
+}
+
+/* Each flower */
+.flower {
+    position: absolute;
+    top: -10%;
+    font-size: 30px;
+    animation: fall linear infinite;
+    opacity: 0.9;
+}
+
+/* Fall animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 1;
+    }
 }
 </style>
 
-<div>
-  <span class="petal">🌸</span>
-  <span class="petal">🌸</span>
-  <span class="petal">🌸</span>
+<div class="falling-flowers">
+    <span class="flower" style="left: 10%; animation-duration: 8s; animation-delay: 0s;">🌸</span>
+    <span class="flower" style="left: 20%; animation-duration: 12s; animation-delay: 2s;">🌺</span>
+    <span class="flower" style="left: 30%; animation-duration: 10s; animation-delay: 1s;">🌼</span>
+    <span class="flower" style="left: 40%; animation-duration: 7s; animation-delay: 3s;">🌻</span>
+    <span class="flower" style="left: 50%; animation-duration: 9s; animation-delay: 1s;">🌸</span>
+    <span class="flower" style="left: 60%; animation-duration: 11s; animation-delay: 0.5s;">🌺</span>
+    <span class="flower" style="left: 70%; animation-duration: 13s; animation-delay: 2.5s;">🌼</span>
+    <span class="flower" style="left: 80%; animation-duration: 8s; animation-delay: 1.5s;">🌻</span>
+    <span class="flower" style="left: 90%; animation-duration: 14s; animation-delay: 3s;">🌸</span>
 </div>
 """, unsafe_allow_html=True)
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
