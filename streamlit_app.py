@@ -79,6 +79,11 @@ if page == "🌺 Introduction":
 
 
 if page == "💐 The Garden":
+    st.image("_.jpeg, use_container_width=True)
+    st.markdown("<h2 style='color: lightpink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
+
+    ## Mental Healthcare Links
+    ##
     if st.button("Flower Shower"):
         st.markdown("""
         <style>
@@ -134,6 +139,7 @@ if page == "💐 The Garden":
             <span class="flower" style="left: 90%; animation-duration: 16s; animation-delay: 3s;">🌸</span>
         </div>
         """, unsafe_allow_html=True)
+        
 
 
 ## Business Problem Presentation
