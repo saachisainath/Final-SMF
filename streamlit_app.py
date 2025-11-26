@@ -88,7 +88,7 @@ if page == "💐 The Garden":
     st.markdown("<h5 style='color: coral; text-align: center;'>You're safe and loved here. Feel free to use these mental health resources.</p>", unsafe_allow_html=True)
 
     ## Mental Healthcare Links
-    st.subheader("Mental Health Resources")
+    st.subheader("🪷 Mental Health Resources")
 
 
     st.markdown("##### Befrienders Worldwide")
@@ -120,7 +120,7 @@ if page == "💐 The Garden":
 
     ## Breath Break
 
-    st.subheader("For a little extra joy in your day!")
+    st.subheader("💐 For a little extra joy in your day!")
 
     if st.button("Flower Shower"):
         st.markdown("""
