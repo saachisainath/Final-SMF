@@ -27,7 +27,7 @@ page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visual
 if page == "🌺 Introduction":
 
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
-    st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: pink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
 
 
     st.subheader("🌸 Our Mission")
@@ -78,16 +78,47 @@ if page == "🌺 Introduction":
         st.dataframe(df.describe())
 
 if page == "🪻 Data Visualization":
-    embed_url = "https://lookerstudio.google.com/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb"
-    components.iframe(src=embed_url, width=1000, height=600)
+    looker_url = "https://lookerstudio.google.com/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb"
+    components.iframe(src=looker_url, width=1000, height=600)
 
 
 if page == "💐 The Garden":
     st.image("_.jpeg", use_container_width=True)
-    st.markdown("<h2 style='color: lightpink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: pink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink; text-align: center;'>Take advantage of our resources!</p>", unsafe_allow_html=True)
 
     ## Mental Healthcare Links
-    ##
+    st.subheader("Mental Health Resources")
+
+
+    st.markdown("##### Befrienders Worldwide")
+    st.markdown("<p style='color: pink; text-align: center;'>Global network offering confidential emotional support in many countries</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://befrienders.org befrienders.org+1" target="_blank">Visit Befrienders Worldwide</a>', unsafe_allow_html=True)
+
+    st.markdown("##### Find A Helpline")
+    st.markdown("<p style='color: pink; text-align: center;'>Free directory connecting you to hotlines and crisis support services in 130+ countries.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://findahelpline.com/ Samaritans+1" target="_blank">Visit Find A Helpline</a>', unsafe_allow_html=True)
+
+    st.markdown("##### Open Counseling")
+    st.markdown("<p style='color: pink; text-align: center;'>Provides a global directory for mental‑health services, affordable therapy, and crisis hotlines around the world.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://caps.arizona.edu/international-help-lines">Visit Open Counseling</a>', unsafe_allow_html=True)
+
+    st.markdown("##### International Association for Suicide Prevention (IASP)")
+    st.markdown("<p style='color: pink; text-align: center;'>Worldwide information on crisis centres and suicide‑prevention resources.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://dev.new.iasp.info/crisis-centres-helplines/ IASP+1" target="_blank">Visit International Association for Suicide Prevention</a>', unsafe_allow_html=True)
+
+    st.markdown("##### Samaritans")
+    st.markdown("<p style='color: pink; text-align: center;'>Offers emotional support and crisis helplines internationally (beyond their UK/Ireland origins), often via email or phone.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/other-sources-help/ Samaritans+1"_blank">Visit Samaritans</a>', unsafe_allow_html=True)
+
+    st.markdown("##### Lifeline International")
+    st.markdown("<p style='color: pink; text-align: center;'>Global umbrella or reference for a number of crisis hotlines and mental health support services worldwide.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="https://lifeline-intl.findahelpline.com/" target="_blank">Visit Lifeline International</a>', unsafe_allow_html=True)
+
+
+
+
+    ## Breath Break
     if st.button("Flower Shower"):
         st.markdown("""
         <style>
