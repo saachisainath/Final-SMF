@@ -39,19 +39,19 @@ if page == "🌺 Introduction":
     st.markdown("<p style='color: lightpink; '>Happiness is less complicated than you may think. Let's break down the factors that contribute to your mental health.</p>", unsafe_allow_html=True)
 
     if st.button("Sleep Quality"):
-        st.markdown("<p style='color: pink; '>Quality sleep is essential for feeling energized, happy, and mentally clear. When you sleep well, your mood improves, your focus sharpens, and you’re better able to enjoy life’s moments and handle challenges with resilience.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: hotpink; '>Quality sleep is essential for feeling energized, happy, and mentally clear. When you sleep well, your mood improves, your focus sharpens, and you’re better able to enjoy life’s moments and handle challenges with resilience.</p>", unsafe_allow_html=True)
 
     if st.button("Stress Level"):
-        st.markdown("<p style='color: pink; '>Managing stress effectively helps you feel calmer, more balanced, and emotionally strong. Lower stress allows you to be present, enjoy positive experiences, and maintain a greater sense of overall happiness.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: salmon; '>Managing stress effectively helps you feel calmer, more balanced, and emotionally strong. Lower stress allows you to be present, enjoy positive experiences, and maintain a greater sense of overall happiness.</p>", unsafe_allow_html=True)
 
     if st.button("Exercise Frequency"):
-        st.markdown("<p style='color: pink; '>Regular physical activity boosts endorphins and other “feel-good” chemicals that lift your mood and increase energy. Exercise also improves confidence, sleep, and mental clarity, all of which contribute to a happier, more vibrant life.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: coral; '>Regular physical activity boosts endorphins and other “feel-good” chemicals that lift your mood and increase energy. Exercise also improves confidence, sleep, and mental clarity, all of which contribute to a happier, more vibrant life.</p>", unsafe_allow_html=True)
 
     if st.button("Social Media Use"):
-        st.markdown("<p style='color: pink; '>Using social media mindfully can strengthen relationships, spark joy, and provide positive connection. However, excessive or passive scrolling may lead to comparison, anxiety, or feelings of isolation, so balance is key to maintaining happiness.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: magenta; '>Using social media mindfully can strengthen relationships, spark joy, and provide positive connection. However, excessive or passive scrolling may lead to comparison, anxiety, or feelings of isolation, so balance is key to maintaining happiness.</p>", unsafe_allow_html=True)
 
     if st.button("Screen Time"):
-        st.markdown("<p style='color: pink; '>Mindful screen time can be a source of learning, entertainment, and connection, supporting your overall well-being. Too much passive screen use, however, can interfere with sleep, reduce social interaction, and lower your mood, so balancing online and offline life helps maximize happiness.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: orange; '>Mindful screen time can be a source of learning, entertainment, and connection, supporting your overall well-being. Too much passive screen use, however, can interfere with sleep, reduce social interaction, and lower your mood, so balancing online and offline life helps maximize happiness.</p>", unsafe_allow_html=True)
 
     st.subheader("🌻 Data Set")
 
