@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 
 st.sidebar.markdown("<h1 style='color: lightsalmon;'>Happy Place</h1>", unsafe_allow_html=True)
-st.sidebar.write("Your roadmap to your happiest self!")
+st.sidebar.write("Your journey to joy")
 
 st.image("OpenAI.jpeg", use_container_width=True)
 st.markdown("<h1 style='color: lightsalmon; text-align: center;'>Happy Place</h1>", unsafe_allow_html=True)
