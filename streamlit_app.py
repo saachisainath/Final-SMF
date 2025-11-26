@@ -22,7 +22,7 @@ st.markdown("<h3 style='color: lightpink; text-align: center;'>Notice what you n
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Viz","🌸 Prediction", "💐 The Garden",])
+page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Prediction", "💐 The Garden",])
 ##Introduction Page
 if page == "🌺 Introduction":
 
@@ -76,6 +76,10 @@ if page == "🌺 Introduction":
 
     if st.button("Click Here to Generate Statistical Summary!"):
         st.dataframe(df.describe())
+
+if page == "🪻 Data Visualization":
+    embed_url = "https://lookerstudio.google.com/embed/reporting/26d9af1d-06d5-4af6-9b58-e12e2de59c61/page/5eobF"
+    components.iframe(src=embed_url, width=1000, height=600)
 
 
 if page == "💐 The Garden":
