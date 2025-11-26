@@ -22,7 +22,7 @@ st.markdown("<h3 style='color: lightpink; text-align: center;'>Notice what you n
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.radoio("Select Page",["🌺 Introduction","🪻 Data Viz","🌸 Prediction", "💐 The Garden",])
+page = st.sidebar.radio("Select Page",["🌺 Introduction","🪻 Data Viz","🌸 Prediction", "💐 The Garden",])
 ##Introduction Page
 if page == "Introduction":
 
