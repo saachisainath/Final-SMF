@@ -45,7 +45,7 @@ if page == "🌺 Introduction":
         st.markdown("<p style='color: salmon; '>Managing stress effectively helps you feel calmer, more balanced, and emotionally strong. Lower stress allows you to be present, enjoy positive experiences, and maintain a greater sense of overall happiness.</p>", unsafe_allow_html=True)
 
     if st.button("Exercise Frequency"):
-        st.markdown("<p style='color: pink; '>Regular physical activity boosts endorphins and other “feel-good” chemicals that lift your mood and increase energy. Exercise also improves confidence, sleep, and mental clarity, all of which contribute to a happier, more vibrant life.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: lightfuchsia; '>Regular physical activity boosts endorphins and other “feel-good” chemicals that lift your mood and increase energy. Exercise also improves confidence, sleep, and mental clarity, all of which contribute to a happier, more vibrant life.</p>", unsafe_allow_html=True)
 
     if st.button("Social Media Use"):
         st.markdown("<p style='color: coral; '>Using social media mindfully can strengthen relationships, spark joy, and provide positive connection. However, excessive or passive scrolling may lead to comparison, anxiety, or feelings of isolation, so balance is key to maintaining happiness.</p>", unsafe_allow_html=True)
