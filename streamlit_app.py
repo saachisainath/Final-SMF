@@ -79,7 +79,7 @@ if page == "🌺 Introduction":
 
 
 if page == "💐 The Garden":
-    st.image("_.jpeg, use_container_width=True)
+    st.image("_.jpeg", use_container_width=True)
     st.markdown("<h2 style='color: lightpink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
 
     ## Mental Healthcare Links
