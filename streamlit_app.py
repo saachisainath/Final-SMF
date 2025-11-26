@@ -12,16 +12,17 @@ import looker_sdk
 import matplotlib.pyplot as plt
 
 
-st.sidebar.markdown("<h1 style='color: lightsalmon;'>Happy Place</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<h1 style='color: lightsalmon;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
 st.sidebar.write("Your journey to joy")
+st.sidebar.write("💐🌺🌷🌻🪷🪻🌸")
 
 st.image("OpenAI.jpeg", use_container_width=True)
-st.markdown("<h1 style='color: lightsalmon; text-align: center;'>Happy Place</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: lightsalmon; text-align: center;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='color: lightpink; text-align: center;'>Notice what you need. Nurture how you feel.</p>", unsafe_allow_html=True)
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "Crystal Ball",])
+page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "The Garden",])
 ##Introduction Page
 if page == "Introduction":
 
@@ -29,17 +30,17 @@ if page == "Introduction":
     st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
 
 
-    st.subheader("Our Mission")
+    st.subheader("🌸 Our Mission")
     st.write("Sometimes you don’t even know why you’re feeling low, only that something needs to change. This app helps you pause, reflect, and uncover the patterns beneath your mood by organizing your daily habits—sleep, social media use, movement, and more—into clear, meaningful insights. As you start to see how your choices shape your well-being, you realize you have far more control than you thought.")
     st.markdown("<p style='color: lightpink; '>Take a moment, search inward, and let your data gently guide you toward a happier, more intentional life!</p>", unsafe_allow_html=True)
 
 
-    st.subheader("Look Inward")
+    st.subheader("🌺 Look Inward")
     
     st.markdown("<p style='color: lightpink; '>Happiness is less complicated than you may think. Let's break down the factors that contribute to your mental health.</p>", unsafe_allow_html=True)
 
 
-    st.subheader("Data Set")
+    st.subheader("🌻 Data Set")
 
     st.markdown("##### Data Preview")
 
