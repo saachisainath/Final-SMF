@@ -78,7 +78,7 @@ if page == "🌺 Introduction":
         st.dataframe(df.describe())
 
 if page == "🪻 Data Visualization":
-    embed_url = "https://lookerstudio.google.com/embed/reporting/26d9af1d-06d5-4af6-9b58-e12e2de59c61/page/5eobF"
+    embed_url = "https://lookerstudio.google.com/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb"
     components.iframe(src=embed_url, width=1000, height=600)
 
 
