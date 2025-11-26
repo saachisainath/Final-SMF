@@ -12,7 +12,7 @@ import looker_sdk
 import matplotlib.pyplot as plt
 
 
-st.sidebar.title("<h1 style='color: lightsalmon;'>Happy Place</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<h1 style='color: lightsalmon;'>Happy Place</h1>", unsafe_allow_html=True)
 st.sidebar.write("Your roadmap to your happiest self!")
 
 st.image("OpenAI.jpeg", use_container_width=True)
