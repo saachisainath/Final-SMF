@@ -9,6 +9,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.metrics import accuracy_score, r2_score, mean_absolute_error
 import streamlit.components.v1 as components
 import looker_sdk
+import matplotlib.pyplot as plt
+
 
 st.sidebar.title("Happy Place")
 st.sidebar.write("Notice what you need. Nurture how you feel")
