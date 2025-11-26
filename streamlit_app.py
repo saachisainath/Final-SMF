@@ -31,9 +31,14 @@ if page == "Introduction":
     st.subheader("Our Mission")
     st.write("Sometimes you don’t even know why you’re feeling low, only that something needs to change. This app helps you pause, reflect, and uncover the patterns beneath your mood by organizing your daily habits—sleep, social media use, movement, and more—into clear, meaningful insights. As you start to see how your choices shape your well-being, you realize you have far more control than you thought.")
     st.markdown("<p style='color: lightpink; '>Take a moment, search inward, and let your data gently guide you toward a happier, more intentional life!</p>", unsafe_allow_html=True)
+
+
+    st.subheader("Look Inward")
     
+    st.markdown("<p style='color: lightpink; '>Happiness is less complicated than you may think. Let's break down the factors that contribute to your mental health.</p>", unsafe_allow_html=True)
+
+
     st.subheader("Data Set")
-    st.markdown("<p style='color: lightpink; '>Look here and see for yourself what we use to inform our student success visualizations and predictions!</p>", unsafe_allow_html=True)
 
     st.markdown("##### Data Preview")
 
@@ -51,7 +56,7 @@ if page == "Introduction":
     else:
         st.warning("This data has some missing values")
 
-    st.markdown("#### 🧠 Statistical Summary")
+    st.markdown("#### Statistical Summary")
 
     if st.button("Click Here to Generate Statistical Summary!"):
         st.dataframe(df.describe())
