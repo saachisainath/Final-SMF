@@ -16,6 +16,10 @@ st.sidebar.title("Happy Place")
 st.sidebar.write("Notice what you need. Nurture how you feel")
 
 st.image("OpenAI.jpeg", use_container_width=True)
+st.markdown("<h1 style='color: lightsalmon; text-align: center;'>Happy Place</h1>", unsafe_allow_html=True)
+st.markdown("<p style='color: fuchsia; text-align: center;'>Are you going to survive the semester? Our data will tell!</p>", unsafe_allow_html=True)
+
+df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
 ## Business Problem Presentation
 ## Data Summary Presentation
