@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 
 st.sidebar.markdown("<h1 style='color: lightsalmon;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
-st.sidebar.write("Your journey to joy")
-st.sidebar.write("💐🌺🌷🌻🪷🪻🌸")
+st.sidebar.markdown("<h3 style='color: lightsalmon;'>Your journey to joy</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='color: lightsalmon;'>💐🌺🌷🌻🪷🪻🌸</h1>", unsafe_allow_html=True)
 
 st.image("OpenAI.jpeg", use_container_width=True)
 st.markdown("<h1 style='color: lightsalmon; text-align: center;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
@@ -22,7 +22,7 @@ st.markdown("<h3 style='color: lightpink; text-align: center;'>Notice what you n
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "The Garden",])
+page = st.sidebar.multiselect("Select Page",["🌺 Introduction","🪻 Data Viz","🌸 Prediction", "💐 The Garden",])
 ##Introduction Page
 if page == "Introduction":
 
