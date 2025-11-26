@@ -25,7 +25,6 @@ page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction
 ##Introduction Page
 if page == "Introduction":
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
-    st.header("☺️ Introduction")
     st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction.</p>", unsafe_allow_html=True)
 
 
@@ -34,7 +33,7 @@ if page == "Introduction":
     st.write("Take a moment, look inward, and let your data gently guide you toward a happier, more intentional life.")
     
     st.subheader("Data Set")
-    st.write("Take a look here to see what we use to inform our student success visualizations and predictions!")
+    st.markdown("<p style='color: coral; text-align: center;'>Take a look here to see for yourself what we use to inform our student success visualizations and predictions!.</p>", unsafe_allow_html=True)
 
     st.markdown("##### Data Preview")
 
