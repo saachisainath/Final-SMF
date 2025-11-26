@@ -76,7 +76,7 @@ if page == "Introduction":
         <span class="flower" style="left: 90%; animation-duration: 14s; animation-delay: 3s;">🌸</span>
     </div>
     """, unsafe_allow_html=True)
-    #st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
+    st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
     st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
 
 
