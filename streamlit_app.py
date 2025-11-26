@@ -92,27 +92,27 @@ if page == "💐 The Garden":
 
 
     st.markdown("##### Befrienders Worldwide")
-    st.markdown("<p style='color: pink; text-align: center;'>Global network offering confidential emotional support in many countries</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink;'>Global network offering confidential emotional support in many countries</p>", unsafe_allow_html=True)
     st.markdown('<a href="https://befrienders.org befrienders.org+1" target="_blank">Visit Befrienders Worldwide</a>', unsafe_allow_html=True)
 
     st.markdown("##### Find A Helpline")
-    st.markdown("<p style='color: pink; text-align: center;'>Free directory connecting you to hotlines and crisis support services in 130+ countries.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink; '>Free directory connecting you to hotlines and crisis support services in 130+ countries.</p>", unsafe_allow_html=True)
     st.markdown('<a href="https://findahelpline.com/ Samaritans+1" target="_blank">Visit Find A Helpline</a>', unsafe_allow_html=True)
 
     st.markdown("##### Open Counseling")
-    st.markdown("<p style='color: pink; text-align: center;'>Provides a global directory for mental‑health services, affordable therapy, and crisis hotlines around the world.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink; '>Provides a global directory for mental‑health services, affordable therapy, and crisis hotlines around the world.</p>", unsafe_allow_html=True)
     st.markdown('<a href="https://caps.arizona.edu/international-help-lines">Visit Open Counseling</a>', unsafe_allow_html=True)
 
     st.markdown("##### International Association for Suicide Prevention (IASP)")
-    st.markdown("<p style='color: pink; text-align: center;'>Worldwide information on crisis centres and suicide‑prevention resources.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink; '>Worldwide information on crisis centres and suicide‑prevention resources.</p>", unsafe_allow_html=True)
     st.markdown('<a href="https://dev.new.iasp.info/crisis-centres-helplines/ IASP+1" target="_blank">Visit International Association for Suicide Prevention</a>', unsafe_allow_html=True)
 
     st.markdown("##### Samaritans")
-    st.markdown("<p style='color: pink; text-align: center;'>Offers emotional support and crisis helplines internationally (beyond their UK/Ireland origins), often via email or phone.</p>", unsafe_allow_html=True)
-    st.markdown('<a href="https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/other-sources-help/ Samaritans+1"_blank">Visit Samaritans</a>', unsafe_allow_html=True)
+    st.markdown("<p style='color: pink;'>Offers emotional support and crisis helplines internationally (beyond their UK/Ireland origins), often via email or phone.</p>", unsafe_allow_html=True)
+    st.markdown('<a href="hhttps://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/other-sources-help/ Samaritans+1" target="_blank">Visit Lifeline International</a>', unsafe_allow_html=True)
 
     st.markdown("##### Lifeline International")
-    st.markdown("<p style='color: pink; text-align: center;'>Global umbrella or reference for a number of crisis hotlines and mental health support services worldwide.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: pink; '>Global umbrella or reference for a number of crisis hotlines and mental health support services worldwide.</p>", unsafe_allow_html=True)
     st.markdown('<a href="https://lifeline-intl.findahelpline.com/" target="_blank">Visit Lifeline International</a>', unsafe_allow_html=True)
 
 
