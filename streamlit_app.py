@@ -24,6 +24,27 @@ df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "Crystal Ball",])
 ##Introduction Page
 if page == "Introduction":
+    st.markdown("""
+<style>
+@keyframes fall {
+  0%   { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(300px); opacity: 1; }
+}
+
+.petal {
+  position: relative;
+  font-size: 40px;
+  animation: fall 4s linear infinite;
+  margin-right: 10px;
+}
+</style>
+
+<div>
+  <span class="petal">🌸</span>
+  <span class="petal">🌸</span>
+  <span class="petal">🌸</span>
+</div>
+""", unsafe_allow_html=True)
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
     st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
 
