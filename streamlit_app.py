@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 st.sidebar.title("Happy Place")
 st.sidebar.write("Notice what you need. Nurture how you feel")
 
-st.image("
+st.image("OpenAI.jpeg", use_container_width=True)
 ### Intro Page
 ## Business Problem Presentation
 ## Data Summary Presentation
