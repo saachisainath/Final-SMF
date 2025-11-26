@@ -85,7 +85,7 @@ if page == "🪻 Data Visualization":
 if page == "💐 The Garden":
     st.image("_.jpeg", use_container_width=True)
     st.markdown("<h2 style='color: pink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color: coral; text-align: center;'>You're safe and loved here. Feel free to use these mental health resources.</p>", unsafe_allow_html=True)
+    st.markdown("<h5 style='color: coral; text-align: center;'>You're safe and loved here. Feel free to use these mental health resources.</p>", unsafe_allow_html=True)
 
     ## Mental Healthcare Links
     st.subheader("Mental Health Resources")
