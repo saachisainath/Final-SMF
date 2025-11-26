@@ -30,10 +30,10 @@ if page == "Introduction":
 
     st.subheader("Our Mission")
     st.write("Sometimes you don’t even know why you’re feeling low, only that something needs to change. This app helps you pause, reflect, and uncover the patterns beneath your mood by organizing your daily habits—sleep, social media use, movement, and more—into clear, meaningful insights. As you start to see how your choices shape your well-being, you realize you have far more control than you thought.")
-    st.markdown("<p style='color: lavender; '>Take a moment, search inward, and let your data gently guide you toward a happier, more intentional life!</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: lightpink; '>Take a moment, search inward, and let your data gently guide you toward a happier, more intentional life!</p>", unsafe_allow_html=True)
     
     st.subheader("Data Set")
-    st.markdown("<p style='color: lavender; '>Look here and see for yourself what we use to inform our student success visualizations and predictions!</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: lightpink; '>Look here and see for yourself what we use to inform our student success visualizations and predictions!</p>", unsafe_allow_html=True)
 
     st.markdown("##### Data Preview")
 
