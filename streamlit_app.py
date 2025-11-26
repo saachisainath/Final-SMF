@@ -119,6 +119,9 @@ if page == "💐 The Garden":
 
 
     ## Breath Break
+
+    st.subheader("For a little extra joy in your day!")
+
     if st.button("Flower Shower"):
         st.markdown("""
         <style>
