@@ -12,9 +12,9 @@ import looker_sdk
 import matplotlib.pyplot as plt
 
 
-st.sidebar.markdown("<h1 style='color: lightsalmon;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
-st.sidebar.markdown("<h3 style='color: lightsalmon;'>Your journey to joy</h1>", unsafe_allow_html=True)
-st.sidebar.markdown("<p style='color: lightsalmon;'>💐🌺🌷🌻🪷🪻🌸</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<h1 style='color: lightsalmon; text-align: center; '>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<h3 style='color: lightpink; text-align: center; '>Your journey to joy</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='color: lightsalmon; text-align: center; '>💐🌺🌷🌻🪷🪻🌸</h1>", unsafe_allow_html=True)
 
 st.image("OpenAI.jpeg", use_container_width=True)
 st.markdown("<h1 style='color: lightsalmon; text-align: center;'>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
