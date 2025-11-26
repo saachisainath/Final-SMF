@@ -54,6 +54,7 @@ if page == "🌺 Introduction":
         st.markdown("<p style='color: orange; '>Mindful screen time can be a source of learning, entertainment, and connection, supporting your overall well-being. Too much passive screen use, however, can interfere with sleep, reduce social interaction, and lower your mood, so balancing online and offline life helps maximize happiness.</p>", unsafe_allow_html=True)
 
     st.subheader("🌻 Data Set")
+    st.markdown("<p style='color: lightpink; '>Here’s a detailed breakdown of our dataset, highlighting key factors that influence mental health and happiness.</p>", unsafe_allow_html=True)
 
     st.markdown("##### Data Preview")
 
