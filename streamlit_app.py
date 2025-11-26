@@ -21,5 +21,38 @@ st.markdown("<p style='color: lightpink; text-align: center;'>Notice what you ne
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
+page = st.sidebar.selectbox("Select Page",["Introduction","Data Viz","Prediction", "Crystal Ball",])
+##Introduction Page
+if page == "Introduction":
+    st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
+    st.header("Introduction")
+
+    st.subheader("🎯 Objective")
+    st.write("Sometimes you don’t even know why you’re feeling low, only that something needs to change. This app helps you pause, reflect, and uncover the patterns beneath your mood by organizing your daily habits—sleep, social media use, movement, and more—into clear, meaningful insights. As you start to see how your choices shape your well-being, you realize you have far more control than you thought.")
+    st.write("Take a moment, look inward, and let your data gently guide you toward a happier, more intentional life.")
+    
+    st.subheader("📊 Data Set")
+    st.write("Take a look here to see what we use to inform our student success visualizations and predictions!")
+
+    st.markdown("##### Data Preview")
+
+    rows = st.slider("Select a number of rows",5,20,5)
+    
+    st.dataframe(df.head(rows))
+
+    st.markdown("##### Missing Values")
+
+    missing = df.isnull().sum()
+    st.write(missing)
+
+    if missing.sum()==0:
+        st.success("No missing values found")
+    else:
+        st.warning("This data has some missing values")
+
+    st.markdown("#### 🧠 Statistical Summary")
+
+    if st.button("Click Here to Generate Statistical Summary!"):
+        st.dataframe(df.describe())
 ## Business Problem Presentation
 ## Data Summary Presentation
