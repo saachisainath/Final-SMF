@@ -24,7 +24,7 @@ df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
 page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Viz","🌸 Prediction", "💐 The Garden",])
 ##Introduction Page
-if page == "Introduction":
+if page == "🌺 Introduction":
 
     st.image("hugol-halpingston-4OyLq2yN9u0-unsplash.jpg", use_container_width=True)
     st.markdown("<h2 style='color: lightpink; text-align: center;'>Introduction</p>", unsafe_allow_html=True)
@@ -64,7 +64,7 @@ if page == "Introduction":
         st.dataframe(df.describe())
 
 
-if page == "Data Viz":
+if page == "💐 The Garden":
     if st.button("Flower Shower"):
         st.markdown("""
         <style>
