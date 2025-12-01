@@ -285,7 +285,6 @@ if page == "🌸 Modeling & Prediction":
        trained_model = run_model(model_choice)
        # Example predictions
        st.write("### Example Predictions (first 5 rows of test set)")
-       st.write(example_X)
        preds = trained_model.predict(example_X)
 
 
