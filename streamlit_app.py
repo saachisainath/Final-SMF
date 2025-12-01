@@ -80,6 +80,72 @@ if page == "🌺 Introduction":
 if page == "🪻 Data Visualization":
     looker_url = "https://lookerstudio.google.com/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb"
     components.iframe(src=looker_url, width=1000, height=600)
+    from sklearn.linear_model import LinearRegression
+    from sklearn.preprocessing import OneHotEncoder
+    from sklearn.compose import ColumnTransformer
+    from sklearn.pipeline import Pipeline
+    
+    
+    X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+           'Stress_Level(1-10)', 'Days_Without_Social_Media',
+           'Exercise_Frequency(week)', 'Social_Media_Platform']]
+    y = df['Happiness_Index(1-10)']
+    
+    
+    categorical_features = ['Gender', 'Social_Media_Platform']
+    numeric_features = ['Age', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+                       'Stress_Level(1-10)', 'Days_Without_Social_Media', 'Exercise_Frequency(week)']
+    
+    
+    preprocessor = ColumnTransformer(
+       transformers=[
+           ('cat', OneHotEncoder(), categorical_features)
+       ],
+       remainder='passthrough'  # keep numeric features as-is
+    )
+    
+    
+    model = Pipeline(steps=[('preprocessor', preprocessor),
+                           ('regressor', LinearRegression())])
+    model.fit(X, y)
+    
+    
+    st.title("Happiness Index Predictor")
+    
+    
+    age = st.number_input("Age", min_value=0, max_value=120, value=25)
+    gender = st.selectbox("Gender", df['Gender'].unique())
+    screen_time = st.slider("Daily Screen Time (hrs)", 0, 12, 3)
+    sleep_quality = st.slider("Sleep Quality (1-10)", 1, 10, 7)
+    stress_level = st.slider("Stress Level (1-10)", 1, 10, 5)
+    days_without_social_media = st.slider("Days Without Social Media", 0, 30, 0)
+    exercise_freq = st.slider("Exercise Frequency (per week)", 0, 14, 3)
+    platform = st.selectbox("Social Media Platform", df['Social_Media_Platform'].unique())
+    
+    
+    input_df = pd.DataFrame({
+       'Age': [age],
+       'Gender': [gender],
+       'Daily_Screen_Time(hrs)': [screen_time],
+       'Sleep_Quality(1-10)': [sleep_quality],
+       'Stress_Level(1-10)': [stress_level],
+       'Days_Without_Social_Media': [days_without_social_media],
+       'Exercise_Frequency(week)': [exercise_freq],
+       'Social_Media_Platform': [platform]
+    })
+
+
+
+
+    predicted_happiness = model.predict(input_df)[0]
+    st.write(f"Predicted Happiness Index: {predicted_happiness:.2f}/10")
+
+
+
+
+    target_happiness = min(predicted_happiness + 1, 10)  # aim for +1 happiness, max 10
+    additional_days_needed = int((target_happiness - predicted_happiness) / 0.1)
+    st.write(f"Estimated additional days without social media to increase happiness by 1 point: {additional_days_needed} days")
 
 
 if page == "💐 The Garden":
