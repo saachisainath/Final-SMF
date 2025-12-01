@@ -22,7 +22,7 @@ st.markdown("<h3 style='color: hotpink; text-align: center;'>Notice what you nee
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", "💐 The Garden",])
+page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", "🌻 Explainability", "💐 The Garden", ])
 ##Introduction Page
 if page == "🌺 Introduction":
 
@@ -278,12 +278,17 @@ if page == "🌸 Modeling & Prediction":
     import shap
     from sklearn.linear_model import LinearRegression
     
-    if app_mode == "SHAP":
-        st.title("SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
+
+if page == "🌻 Explainability": 
+        st.subheader("🌻 SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
     
         st.warning("⚠️ Please run a prediction first so the model and data load correctly.")
+        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+       'Stress_Level(1-10)', 'Days_Without_Social_Media',
+       'Exercise_Frequency(week)', 'Social_Media_Platform']]
+        y = df['Happiness_Index(1-10)']
+
     
-        df = data.copy()
     
         target = "Happiness_Index(1-10)"
         X = df.drop(columns=[target])
