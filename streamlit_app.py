@@ -78,7 +78,7 @@ if page == "🌺 Introduction":
         st.dataframe(df.describe())
 
 if page == "🪻 Data Visualization":
-    looker_url = "https://lookerstudio.google.com/u/0/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb/page/OUwgF"
+    looker_url = "https://lookerstudio.google.com/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb"
     components.iframe(src=looker_url, width=1000, height=600)
     from sklearn.linear_model import LinearRegression
     from sklearn.preprocessing import OneHotEncoder
