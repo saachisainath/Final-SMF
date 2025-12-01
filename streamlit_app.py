@@ -195,11 +195,11 @@ if page == "🌸 Modeling & Prediction":
     df = df.dropna(subset=[TARGET_COL])
     X = df.drop(columns=[TARGET_COL])
     y = df[TARGET_COL]
-    st.markdown("<h3 style='color: coral; '>Target Distribution</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: pink; '>Target Distribution</p>", unsafe_allow_html=True)
     st.write(y.value_counts())
     numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
     categorical_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
-    st.markdown("<h3 style='color: coral; '>Feature Types</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: orange; '>Feature Types</p>", unsafe_allow_html=True)
     st.write("**Numeric features:**", numeric_cols)
     st.write("**Categorical features:**", categorical_cols)
     numeric_pipeline = Pipeline(steps=[
