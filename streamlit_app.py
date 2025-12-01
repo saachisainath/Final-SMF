@@ -280,7 +280,6 @@ if page == "🌸 Modeling & Prediction":
     st.subheader("🌻 SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
     
     
-    st.warning("⚠️ Please run a prediction first so the model and data load correctly.")
     X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
    'Stress_Level(1-10)', 'Days_Without_Social_Media',
    'Exercise_Frequency(week)', 'Social_Media_Platform']]
