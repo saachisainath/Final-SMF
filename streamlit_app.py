@@ -22,7 +22,7 @@ st.markdown("<h3 style='color: hotpink; text-align: center;'>Notice what you nee
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Prediction", "💐 The Garden",])
+page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", "💐 The Garden",])
 ##Introduction Page
 if page == "🌺 Introduction":
 
@@ -180,7 +180,115 @@ if page == "💐 The Garden":
         
 
 
-## Business Problem Presentation
+if page == "🌸 Modeling & Prediction":
+    import streamlit as st
+    import pandas as pd
+    import seaborn as sns       
+    import sklearn as sk         
+    import matplotlib.pyplot as plt     
+    import numpy as np
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import OneHotEncoder, StandardScaler
+    from sklearn.pipeline import Pipeline
+    from sklearn.impute import SimpleImputer
+    from sklearn.compose import ColumnTransformer
+    st.title("Mental Health & Social Media - ML Models")
+    st.subheader("Compare two models: Logistic Regression vs Random Forest")
+    df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
+    TARGET_COL = "Happiness_Index(1-10)"
+    if TARGET_COL not in df.columns:
+       st.error(f"Target column '{TARGET_COL}' not found in dataset. "
+                f"Available columns: {list(df.columns)}")
+       st.stop()
+    df = df.dropna(subset=[TARGET_COL])
+    X = df.drop(columns=[TARGET_COL])
+    y = df[TARGET_COL]
+    st.markdown("### Target Distribution")
+    st.write(y.value_counts())
+    numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
+    categorical_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
+    st.markdown("### Feature Types")
+    st.write("**Numeric features:**", numeric_cols)
+    st.write("**Categorical features:**", categorical_cols)
+    numeric_pipeline = Pipeline(steps=[
+       ("imputer", SimpleImputer(strategy="median")),
+       ("scaler", StandardScaler())
+    ])
+    categorical_pipeline = Pipeline(steps=[
+       ("imputer", SimpleImputer(strategy="most_frequent")),
+       ("onehot", OneHotEncoder(handle_unknown="ignore"))
+    ])
+    preprocessor = ColumnTransformer(
+       transformers=[
+           ("num", numeric_pipeline, numeric_cols),
+           ("cat", categorical_pipeline, categorical_cols)
+       ]
+    )
+    log_model = Pipeline(steps=[
+       ("preprocess", preprocessor),
+       ("clf", LogisticRegression(max_iter=1000))
+    ])
+    rf_model = Pipeline(steps=[
+       ("preprocess", preprocessor),
+       ("clf", RandomForestClassifier(
+           n_estimators=200,
+           random_state=42
+       ))
+    ])
+    MODELS = {
+       "Logistic Regression": log_model,
+       "Random Forest": rf_model
+    }
+    X_train, X_test, y_train, y_test = train_test_split(
+       X, y,
+       test_size=0.2,
+       random_state=42,
+       stratify=y
+    )
+    st.markdown("### Choose a model")
+    model_choice = st.selectbox(
+       "Select the model to train:",
+       list(MODELS.keys())
+    )
+    def run_model(model_name):
+       model = MODELS[model_name]
+       st.write(f"### Training: {model_name}")
+       model.fit(X_train, y_train)
+       y_pred = model.predict(X_test)
+       # ---- Accuracy ----
+       acc = accuracy_score(y_test, y_pred)
+       st.write(f"**Accuracy:** {acc:.3f}")
+       # ---- Classification Report ----
+       st.write("**Classification Report:**")
+       st.text(classification_report(y_test, y_pred))
+       # ---- Confusion Matrix ----
+       st.write("**Confusion Matrix:**")
+       classes = np.unique(y_test)
+       cm = confusion_matrix(y_test, y_pred, labels=classes)
+       cm_df = pd.DataFrame(cm, index=classes, columns=classes)
+       fig, ax = plt.subplots()
+       sns.heatmap(
+           cm_df,
+           annot=True,
+           fmt='d',
+           cmap='Purples',
+           ax=ax
+       )
+       ax.set_xlabel("Predicted Label")
+       ax.set_ylabel("True Label")
+       st.pyplot(fig)
+       return model
+    if st.button("Run Selected Model"):
+       trained_model = run_model(model_choice)
+       # Example predictions
+       st.write("### Example Predictions (first 5 rows of test set)")
+       example_X = X_test.head()
+       st.write("Input features:")
+       st.write(example_X)
+       preds = trained_model.predict(example_X)
 
 
 
