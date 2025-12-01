@@ -284,7 +284,6 @@ if page == "🌸 Modeling & Prediction":
     if st.button("Run Selected Model"):
        trained_model = run_model(model_choice)
        # Example predictions
-       st.write("### Example Predictions (first 5 rows of test set)")
 
 
 
