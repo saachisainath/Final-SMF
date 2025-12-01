@@ -319,7 +319,9 @@ if page == "🌸 Modeling & Prediction":
 
 
 
-finally if page == "💐 The Garden":
+
+
+if page == "💐 The Garden":
     st.image("_.jpeg", use_container_width=True)
     st.markdown("<h2 style='color: hotpink; text-align: center;'>The Garden</p>", unsafe_allow_html=True)
     st.markdown("<h5 style='color: coral; text-align: center;'>You're safe and loved here. Feel free to use these mental health resources.</p>", unsafe_allow_html=True)
