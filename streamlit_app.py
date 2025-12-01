@@ -297,20 +297,20 @@ if page == "🌸 Modeling & Prediction":
     model.fit(X, y)
 
     # Try SHAP calculations
-    try:
-        # Sample 100 rows for speed
-        sample_X = X.sample(100, random_state=42)
+    
+    # Sample 100 rows for speed
+    sample_X = X.sample(100, random_state=42)
 
-        explainer = shap.Explainer(model, sample_X)
-        shap_values = explainer(sample_X)
+    explainer = shap.Explainer(model, sample_X)
+    shap_values = explainer(sample_X)
 
-        # -------------------------
-        # GLOBAL FEATURE IMPORTANCE
-        # -------------------------
-        st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
-        st.write("This plot shows which variables influence happiness the most across the entire dataset.")
+    # -------------------------
+    # GLOBAL FEATURE IMPORTANCE
+    # -------------------------
+    st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
+    st.write("This plot shows which variables influence happiness the most across the entire dataset.")
 
-        st_shap(shap.plots.beeswarm(shap_values), height=600)
+    st_shap(shap.plots.beeswarm(shap_values), height=600)
 
 
 
