@@ -77,6 +77,8 @@ if page == "🌺 Introduction":
     if st.button("Click Here to Generate Statistical Summary!"):
         st.dataframe(df.describe())
 
+
+
 if page == "🪻 Data Visualization":
     looker_url = "https://lookerstudio.google.com/embed/reporting/78ce404a-a5e0-4180-8739-dcbac8f7c5bb/page/OUwgF"
     components.iframe(src=looker_url, width=1000, height=600)
@@ -110,7 +112,7 @@ if page == "🪻 Data Visualization":
     model.fit(X, y)
     
     
-    st.title("Happiness Index Predictor")
+    st.subheader("🌼 Happiness Index Predictor")
     
     
     age = st.number_input("Age", min_value=0, max_value=120, value=25)
@@ -138,14 +140,14 @@ if page == "🪻 Data Visualization":
 
 
     predicted_happiness = model.predict(input_df)[0]
-    st.write(f"Predicted Happiness Index: {predicted_happiness:.2f}/10")
+    st.markdown(f"Predicted Happiness Index: {predicted_happiness:.2f}/10")
 
 
 
 
     target_happiness = min(predicted_happiness + 1, 10)  # aim for +1 happiness, max 10
     additional_days_needed = int((target_happiness - predicted_happiness) / 0.1)
-    st.write(f"Estimated additional days without social media to increase happiness by 1 point: {additional_days_needed} days")
+    st.subheader(f"Estimated additional days without social media to increase happiness by 1 point: {additional_days_needed} days")
 
 
 if page == "💐 The Garden":
