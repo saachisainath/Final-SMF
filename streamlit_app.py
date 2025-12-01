@@ -277,44 +277,42 @@ if page == "🌸 Modeling & Prediction":
 
     import shap
     from sklearn.linear_model import LinearRegression
+    st.subheader("🌻 SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
     
+    
+    st.warning("⚠️ Please run a prediction first so the model and data load correctly.")
+    X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+   'Stress_Level(1-10)', 'Days_Without_Social_Media',
+   'Exercise_Frequency(week)', 'Social_Media_Platform']]
+    y = df['Happiness_Index(1-10)']
 
-if page == "🌻 Explainability": 
-        st.subheader("🌻 SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
-    
-        st.warning("⚠️ Please run a prediction first so the model and data load correctly.")
-        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
-       'Stress_Level(1-10)', 'Days_Without_Social_Media',
-       'Exercise_Frequency(week)', 'Social_Media_Platform']]
-        y = df['Happiness_Index(1-10)']
 
-    
-    
-        target = "Happiness_Index(1-10)"
-        X = df.drop(columns=[target])
-        y = df[target]
-    
-        # Train your model (same model used for prediction page)
-        model = LinearRegression()
-        model.fit(X, y)
-    
-        # Try SHAP calculations
-        try:
-            # Sample 100 rows for speed
-            sample_X = X.sample(100, random_state=42)
-    
-            explainer = shap.Explainer(model, sample_X)
-            shap_values = explainer(sample_X)
-    
-            # -------------------------
-            # GLOBAL FEATURE IMPORTANCE
-            # -------------------------
-            st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
-            st.write("This plot shows which variables influence happiness the most across the entire dataset.")
-    
-            st_shap(shap.plots.beeswarm(shap_values), height=600)
 
- 
+    target = "Happiness_Index(1-10)"
+    X = df.drop(columns=[target])
+    y = df[target]
+
+    # Train your model (same model used for prediction page)
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # Try SHAP calculations
+    try:
+        # Sample 100 rows for speed
+        sample_X = X.sample(100, random_state=42)
+
+        explainer = shap.Explainer(model, sample_X)
+        shap_values = explainer(sample_X)
+
+        # -------------------------
+        # GLOBAL FEATURE IMPORTANCE
+        # -------------------------
+        st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
+        st.write("This plot shows which variables influence happiness the most across the entire dataset.")
+
+        st_shap(shap.plots.beeswarm(shap_values), height=600)
+
+
 
 
 
