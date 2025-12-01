@@ -270,7 +270,7 @@ if page == "🌸 Modeling & Prediction":
        ax.set_ylabel("True Label")
        st.pyplot(fig)
        return model
-    if st.button("Run Selected Model"):
+    if st.button("💐 Run Selected Model"):
        trained_model = run_model(model_choice)
        # Example predictions
 
