@@ -275,7 +275,41 @@ if page == "🌸 Modeling & Prediction":
        trained_model = run_model(model_choice)
        # Example predictions
 
+    import shap
+    from sklearn.linear_model import LinearRegression
+    
+    if app_mode == "SHAP":
+        st.title("SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
+    
+        st.warning("⚠️ Please run a prediction first so the model and data load correctly.")
+    
+        df = data.copy()
+    
+        target = "Happiness_Index(1-10)"
+        X = df.drop(columns=[target])
+        y = df[target]
+    
+        # Train your model (same model used for prediction page)
+        model = LinearRegression()
+        model.fit(X, y)
+    
+        # Try SHAP calculations
+        try:
+            # Sample 100 rows for speed
+            sample_X = X.sample(100, random_state=42)
+    
+            explainer = shap.Explainer(model, sample_X)
+            shap_values = explainer(sample_X)
+    
+            # -------------------------
+            # GLOBAL FEATURE IMPORTANCE
+            # -------------------------
+            st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
+            st.write("This plot shows which variables influence happiness the most across the entire dataset.")
+    
+            st_shap(shap.plots.beeswarm(shap_values), height=600)
 
+ 
 
 
 
