@@ -140,17 +140,16 @@ if page == "🪻 Data Visualization":
 
 
     predicted_happiness = model.predict(input_df)[0]
-    st.markdown("<h3 style='color: hotpink; '>Your Personal Predicted Happiness Score:</p>", unsafe_allow_html=True)
-
-    st.markdown(f"Predicted Happiness Index: {predicted_happiness:.2f}/10")
+    st.markdown("<h4 style='color: hotpink; '>Your Personal Predicted Happiness Score:</p>", unsafe_allow_html=True)
+    st.subheader(f"Predicted Happiness Index: {predicted_happiness:.2f}/10")
 
 
 
 
     target_happiness = min(predicted_happiness + 1, 10)  # aim for +1 happiness, max 10
     additional_days_needed = int((target_happiness - predicted_happiness) / 0.1)
-    st.markdown("<h3 style='color: salmon; '>How many days should you skip social media (+1 Happiness Point)?:</p>", unsafe_allow_html=True)
-    st.subheader(f"Days Needed: {additional_days_needed} days")
+    st.markdown("<h4 style='color: salmon; '>How many days should you skip social media (+1 Happiness Point)?:</p>", unsafe_allow_html=True)
+    st.subheader(f"+1 Happiness: {additional_days_needed} days")
 
 
 if page == "💐 The Garden":
