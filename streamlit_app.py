@@ -48,7 +48,7 @@ st.markdown("<h3 style='color: hotpink; text-align: center;'>Notice what you nee
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", "🌻 Explainability", "💐 The Garden", ])
+page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", , "💐 The Garden", ])
 ##Introduction Page
 if page == "🌺 Introduction":
 
@@ -305,41 +305,13 @@ if page == "🌸 Modeling & Prediction":
         st.subheader("🌻 SHAP Model Explainability")
         st.write("This section explains *why* the model predicts your happiness score.")
         
-        import shap
-        import streamlit.components.v1 as components
-        
-        # Take a sample for speed
-        sample_X = X.sample(100, random_state=42)
-        
-        # Transform numeric + categorical features
-        X_transformed = model.named_steps["prep"].transform(sample_X)
-        
-        # Use underlying regressor for SHAP
-        regressor = model.named_steps["regressor"]
-        
-        # Build SHAP explainer
-        explainer = shap.Explainer(regressor, X_transformed)
-        shap_values = explainer(X_transformed)
-        
-        # ------------------------
-        # Global Feature Importance
-        # ------------------------
-        st.subheader("🌍 Global Feature Importance")
-        components.html(
-            shap.plots.beeswarm(shap_values, show=False).html(),
-            height=600,
-            scrolling=True
-        )
-        
-        # ------------------------
-        # Individual Prediction Example
-        # ------------------------
-        st.subheader("🌸 Example Individual Prediction")
-        components.html(
-            shap.plots.waterfall(shap_values[0], show=False).html(),
-            height=600,
-            scrolling=True
-        )
+   if app_mode == "W&B Tracking ☁️":
+    st.title("🏋️ Weights & Biases Experiment Tracking")
+
+    st.info("Click the button below to view your dashboard:")
+
+    st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
+            
 
 
 
