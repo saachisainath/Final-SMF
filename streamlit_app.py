@@ -292,7 +292,7 @@ if page == "🌸 Modeling & Prediction":
 
         st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
 
-        st.title("🌺 SHAP Model Explainability ")
+        st.subheader("🌺 SHAP Model Explainability ")
         
         st.warning("Run a Prediction first so the model & data load here.")
     
