@@ -287,9 +287,9 @@ if page == "🌸 Modeling & Prediction":
 
 
 
-    target = "Happiness_Index(1-10)"
-    X = df.drop(columns=[target])
-    y = df[target]
+   ####### target = "Happiness_Index(1-10)"
+   ####### X = df.drop(columns=[target])
+    ######### y = df[target]
 
     # Train your model (same model used for prediction page)
     model = LinearRegression()
@@ -310,6 +310,11 @@ if page == "🌸 Modeling & Prediction":
     st.write("This plot shows which variables influence happiness the most across the entire dataset.")
 
     st_shap(shap.plots.beeswarm(shap_values), height=600)
+
+
+
+
+
 
 
 
