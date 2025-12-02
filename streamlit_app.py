@@ -273,6 +273,34 @@ if page == "🌸 Modeling & Prediction":
        return model
     if st.button("💐 Run Selected Model"):
        trained_model = run_model(model_choice)
+        import shap
+        import streamlit.components.v1 as components
+        
+        # Helper for SHAP in Streamlit
+        def st_shap(plot, height=None):
+            shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+            components.html(shap_html, height=height)
+        
+        # Use the SAME PREPROCESSOR as your ML models
+        preprocessor.fit(X_train)
+        
+        X_processed = preprocessor.transform(X)
+        feature_names = preprocessor.get_feature_names_out()
+        
+        model = LinearRegression()
+        model.fit(X_processed, y)
+        
+        # Sample for faster SHAP
+        sample = X.sample(100, random_state=42)
+        sample_processed = preprocessor.transform(sample)
+        
+        explainer = shap.LinearExplainer(model, sample_processed)
+        shap_values = explainer(sample_processed)
+        
+        st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
+        fig = shap.plots.beeswarm(shap_values, show=False)
+        st_shap(fig, height=600)
+
  
 
 
