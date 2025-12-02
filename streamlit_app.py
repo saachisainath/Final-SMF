@@ -285,45 +285,66 @@ if page == "🌸 Modeling & Prediction":
        return model
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
-        import shap
-        from sklearn.linear_model import LinearRegression
+        st.subheader("🌻 SHAP Model Explainability")
+        st.write("This section explains *why* the model predicts your happiness score.")
         
-        st.title("SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
-            
+        # ------------------------
+        # Prepare Data
+        # ------------------------
+        target = "Happiness_Index(1-10)"
         
-        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
-               'Stress_Level(1-10)', 'Days_Without_Social_Media',
-               'Exercise_Frequency(week)', 'Social_Media_Platform']]
-        y = df['Happiness_Index(1-10)']
+        X = df.drop(columns=[target])
+        y = df[target]
         
-            # Train your model (same model used for prediction page)
-            model = LinearRegression()
-            model.fit(X, y)
+        categorical_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
+        numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
         
-            # Try SHAP calculations
-            try:
-                # Sample 100 rows for speed
-                sample_X = X.sample(100, random_state=42)
+        preprocessor = ColumnTransformer(
+            transformers=[
+                ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols),
+            ],
+            remainder="passthrough"
+        )
         
-                explainer = shap.Explainer(model, sample_X)
-                shap_values = explainer(sample_X)
+        # ------------------------
+        # Fit linear model
+        # ------------------------
+        model = Pipeline(steps=[
+            ("prep", preprocessor),
+            ("regressor", LinearRegression())
+        ])
         
+        model.fit(X, y)
         
-                st.subheader("Global Feature Importance (SHAP Summary Plot)")
-                st.write("This plot shows which variables influence happiness the most across the entire dataset.")
+        # Sample for speed
+        sample_X = X.sample(100, random_state=42)
         
-                st_shap(shap.plots.beeswarm(shap_values), height=600)
+        # ------------------------
+        # Build SHAP Explainer
+        # ------------------------
+        try:
+            explainer = shap.Explainer(model.predict, sample_X)
+            shap_values = explainer(sample_X)
         
-                # -------------------------
-                # LOCAL EXPLANATION
-                # -------------------------
-                st.subheader("Individual Prediction Explanation (Waterfall Plot)")
-                st.write("This explains how each variable increased or decreased the happiness prediction for one sample user.")
+            # ------------------------
+            # GLOBAL IMPORTANCE PLOT
+            # ------------------------
+            st.subheader("🌍 Global Feature Importance")
+            st.write("Shows which features matter most overall.")
         
-                st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+            st_shap(shap.plots.beeswarm(shap_values), height=600)
         
-            except Exception as e:
-                st.error(f"SHAP failed to run: {e}")
+            # ------------------------
+            # INDIVIDUAL PREDICTION
+            # ------------------------
+            st.subheader("🌸 Example Individual Prediction")
+            st.write("This waterfall plot explains ONE prediction in detail.")
+        
+            st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+        
+        except Exception as e:
+            st.error(f"SHAP failed: {e}")
+
         
 
  
