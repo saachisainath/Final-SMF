@@ -291,6 +291,16 @@ if page == "🌸 Modeling & Prediction":
         st.info("Click the button below to view your dashboard:")
 
         st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
+######
+#SHAP CODE
+#########
+
+        
+        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+           'Stress_Level(1-10)', 'Days_Without_Social_Media',
+           'Exercise_Frequency(week)', 'Social_Media_Platform']]
+        y = df['Happiness_Index(1-10)']
+    
 
         st.subheader("🌺 SHAP Model Explainability ")
         
