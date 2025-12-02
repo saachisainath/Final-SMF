@@ -273,7 +273,8 @@ if page == "🌸 Modeling & Prediction":
        return model
     if st.button("💐 Run Selected Model"):
        trained_model = run_model(model_choice)
-       # Example predictions
+   '''
+    # Example predictions
     import shap
     import streamlit.components.v1 as components
     
@@ -301,7 +302,7 @@ if page == "🌸 Modeling & Prediction":
     st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
     fig = shap.plots.beeswarm(shap_values, show=False)
     st_shap(fig, height=600)
-
+'''
 
 
 
