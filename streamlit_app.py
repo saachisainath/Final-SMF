@@ -272,7 +272,7 @@ if page == "🌸 Modeling & Prediction":
        st.pyplot(fig)
        return model
     if st.button("💐 Run Selected Model"):
-       trained_model = run_model(model_choice)
+        trained_model = run_model(model_choice)
         import shap
         import streamlit.components.v1 as components
         
