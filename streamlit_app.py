@@ -308,19 +308,27 @@ if page == "🌸 Modeling & Prediction":
     
         
         try:
+            st.write("Preparing SHAP explanations...")
+        
+            # raw sample
             sample = X.sample(100)
         
-            # Wrap model into a callable for SHAP
-            predict_fn = lambda data: trained_model.predict(data)
+            # transform with preprocessing pipeline
+            sample_trans = trained_model.named_steps["preprocess"].transform(sample)
         
-            explainer = shap.Explainer(predict_fn, sample)
-            shap_values = explainer(sample)
+            # prediction function on transformed features
+            predict_fn = lambda data: trained_model.named_steps["clf"].predict(data)
+        
+            # create SHAP explainer
+            explainer = shap.Explainer(predict_fn, sample_trans)
+            shap_values = explainer(sample_trans)
         
             st.subheader("SHAP Summary Plot")
             st_shap(shap.plots.beeswarm(shap_values), height=600)
         
             st.subheader("First Prediction Waterfall")
             st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+        
         except Exception as e:
             st.error(f"SHAP failed: {e}")
 
