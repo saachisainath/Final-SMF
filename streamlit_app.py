@@ -286,32 +286,45 @@ if page == "🌸 Modeling & Prediction":
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
         import shap
-        import streamlit.components.v1 as components
+        from sklearn.linear_model import LinearRegression
         
-        # Helper for SHAP in Streamlit
-        def st_shap(plot, height=None):
-            shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-            components.html(shap_html, height=height)
+        st.title("SHAP Model Explainability (Why Does the Model Predict Your Happiness?)")
+            
         
-        # Use the SAME PREPROCESSOR as your ML models
-        preprocessor.fit(X_train)
+        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
+               'Stress_Level(1-10)', 'Days_Without_Social_Media',
+               'Exercise_Frequency(week)', 'Social_Media_Platform']]
+        y = df['Happiness_Index(1-10)']
         
-        X_processed = preprocessor.transform(X)
-        feature_names = preprocessor.get_feature_names_out()
+            # Train your model (same model used for prediction page)
+            model = LinearRegression()
+            model.fit(X, y)
         
-        model = LinearRegression()
-        model.fit(X_processed, y)
+            # Try SHAP calculations
+            try:
+                # Sample 100 rows for speed
+                sample_X = X.sample(100, random_state=42)
         
-        # Sample for faster SHAP
-        sample = X.sample(100, random_state=42)
-        sample_processed = preprocessor.transform(sample)
+                explainer = shap.Explainer(model, sample_X)
+                shap_values = explainer(sample_X)
         
-        explainer = shap.LinearExplainer(model, sample_processed)
-        shap_values = explainer(sample_processed)
         
-        st.subheader("🌍 Global Feature Importance (SHAP Summary Plot)")
-        fig = shap.plots.beeswarm(shap_values, show=False)
-        st_shap(fig, height=600)
+                st.subheader("Global Feature Importance (SHAP Summary Plot)")
+                st.write("This plot shows which variables influence happiness the most across the entire dataset.")
+        
+                st_shap(shap.plots.beeswarm(shap_values), height=600)
+        
+                # -------------------------
+                # LOCAL EXPLANATION
+                # -------------------------
+                st.subheader("Individual Prediction Explanation (Waterfall Plot)")
+                st.write("This explains how each variable increased or decreased the happiness prediction for one sample user.")
+        
+                st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+        
+            except Exception as e:
+                st.error(f"SHAP failed to run: {e}")
+        
 
  
 
