@@ -285,14 +285,9 @@ if page == "🌸 Modeling & Prediction":
        return model
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
-        # ------------------------
-        # 🌻 SHAP Model Explainability
-        # ------------------------
-        st.subheader("🌻 SHAP Model Explainability")
-        st.write("This section explains *why* the model predicts your happiness score.")
+   
         
-    if app_mode == "W&B Tracking ☁️":
-        st.title("🏋️ Weights & Biases Experiment Tracking")
+        st.subheader("🏋️ Weights & Biases Experiment Tracking")
         st.info("Click the button below to view your dashboard:")
 
         st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
