@@ -282,7 +282,7 @@ if page == "🌸 Modeling & Prediction":
        ax.set_xlabel("Predicted Label")
        ax.set_ylabel("True Label")
        st.pyplot(fig)
-       #return model
+       return model
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
    
@@ -297,19 +297,23 @@ if page == "🌸 Modeling & Prediction":
         st.warning("Run a Prediction first so the model & data load here.")
     
         
-    
         try:
-            explainer = shap.Explainer(trained_model, X.sample(100))
-            shap_values = explainer(X.sample(100))
-    
+            sample = X.sample(100)
+        
+            # Wrap model into a callable for SHAP
+            predict_fn = lambda data: trained_model.predict(data)
+        
+            explainer = shap.Explainer(predict_fn, sample)
+            shap_values = explainer(sample)
+        
             st.subheader("SHAP Summary Plot")
             st_shap(shap.plots.beeswarm(shap_values), height=600)
-    
+        
             st.subheader("First Prediction Waterfall")
             st_shap(shap.plots.waterfall(shap_values[0]), height=600)
-    
         except Exception as e:
             st.error(f"SHAP failed: {e}")
+
 
 
 
