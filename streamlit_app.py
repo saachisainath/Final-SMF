@@ -296,15 +296,7 @@ if page == "🌸 Modeling & Prediction":
         
         st.warning("Run a Prediction first so the model & data load here.")
     
-        select_ds = st.sidebar.selectbox("Dataset", DATA_SELECT[model_mode])
-        select_dataset, df = get_dataset(select_ds)
-        df = clean_data(select_dataset)
-    
-        target = target_variable[select_ds]
-        X = df.drop(columns=[target])
-        y = df[target]
-    
-        model = train_model(model_mode, X, y)
+        
     
         try:
             explainer = shap.Explainer(model, X.sample(100))
