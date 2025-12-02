@@ -22,6 +22,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 
 import shap
+st_shap(shap.plots.beeswarm(shap_values), height=600)
+st_shap(shap.plots.waterfall(shap_values[0]), height=600)
 
 
 st.sidebar.markdown("<h1 style='color: lightsalmon; text-align: center; '>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
