@@ -292,8 +292,7 @@ if page == "🌸 Modeling & Prediction":
         st.write("This section explains *why* the model predicts your happiness score.")
         
     if app_mode == "W&B Tracking ☁️":
-       st.title("🏋️ Weights & Biases Experiment Tracking")
-
+        st.title("🏋️ Weights & Biases Experiment Tracking")
         st.info("Click the button below to view your dashboard:")
 
         st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
