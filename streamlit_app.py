@@ -291,7 +291,34 @@ if page == "🌸 Modeling & Prediction":
         st.info("Click the button below to view your dashboard:")
 
         st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
-            
+
+        st.title("🌺 SHAP Model Explainability ")
+        
+        st.warning("Run a Prediction first so the model & data load here.")
+    
+        select_ds = st.sidebar.selectbox("Dataset", DATA_SELECT[model_mode])
+        select_dataset, df = get_dataset(select_ds)
+        df = clean_data(select_dataset)
+    
+        target = target_variable[select_ds]
+        X = df.drop(columns=[target])
+        y = df[target]
+    
+        model = train_model(model_mode, X, y)
+    
+        try:
+            explainer = shap.Explainer(model, X.sample(100))
+            shap_values = explainer(X.sample(100))
+    
+            st.subheader("SHAP Summary Plot")
+            st_shap(shap.plots.beeswarm(shap_values), height=600)
+    
+            st.subheader("First Prediction Waterfall")
+            st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+    
+        except Exception as e:
+            st.error(f"SHAP failed: {e}")
+
 
 
 
