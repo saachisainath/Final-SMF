@@ -291,7 +291,7 @@ if page == "🌸 Modeling & Prediction":
         st.subheader("🌻 SHAP Model Explainability")
         st.write("This section explains *why* the model predicts your happiness score.")
         
-   if app_mode == "W&B Tracking ☁️":
+    if app_mode == "W&B Tracking ☁️":
        st.title("🏋️ Weights & Biases Experiment Tracking")
 
         st.info("Click the button below to view your dashboard:")
