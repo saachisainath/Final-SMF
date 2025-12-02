@@ -22,8 +22,20 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 
 import shap
-st_shap(shap.plots.beeswarm(shap_values), height=600)
-st_shap(shap.plots.waterfall(shap_values[0]), height=600)
+
+
+
+def st_shap(plot, height=None):
+    """Helper function to display SHAP plots in Streamlit"""
+    # If the plot is a matplotlib figure
+    if isinstance(plot, plt.Figure):
+        st.pyplot(plot, bbox_inches='tight')
+    # If the plot is a JS/HTML plot (like shap.plots.beeswarm returns)
+    else:
+        shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+        st.components.v1.html(shap_html, height=height, scrolling=True)
+
+
 
 
 st.sidebar.markdown("<h1 style='color: lightsalmon; text-align: center; '>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
