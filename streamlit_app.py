@@ -12,6 +12,18 @@ import looker_sdk
 import matplotlib.pyplot as plt
 
 
+from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+
+import shap
+
+
 st.sidebar.markdown("<h1 style='color: lightsalmon; text-align: center; '>🌻 Happy Place 🌻</h1>", unsafe_allow_html=True)
 st.sidebar.markdown("<h3 style='color: hotpink; text-align: center; '>Your journey to joy!</h1>", unsafe_allow_html=True)
 st.sidebar.markdown("<p style='color: lightsalmon; text-align: center; '>💐🌺🌷🌻🪷🪻🌸</h1>", unsafe_allow_html=True)
