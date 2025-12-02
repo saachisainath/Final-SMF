@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, r2_score, mean_absolute_error
 import streamlit.components.v1 as components
 import looker_sdk
 import matplotlib.pyplot as plt
-
+import shap
 
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.ensemble import RandomForestClassifier
