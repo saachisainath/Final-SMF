@@ -282,7 +282,7 @@ if page == "🌸 Modeling & Prediction":
        ax.set_xlabel("Predicted Label")
        ax.set_ylabel("True Label")
        st.pyplot(fig)
-       return model
+       #return model
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
    
@@ -299,7 +299,7 @@ if page == "🌸 Modeling & Prediction":
         
     
         try:
-            explainer = shap.Explainer(model, X.sample(100))
+            explainer = shap.Explainer(trained_model, X.sample(100))
             shap_values = explainer(X.sample(100))
     
             st.subheader("SHAP Summary Plot")
