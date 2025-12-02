@@ -6,4 +6,4 @@ seaborn
 scikit-learn
 plotly.express
 looker_sdk
-shap
+shap==0.44.1
