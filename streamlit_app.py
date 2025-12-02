@@ -21,20 +21,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 
-import shap
-
-
-
-def st_shap(plot, height=None):
-    """Helper function to display SHAP plots in Streamlit"""
-    # If the plot is a matplotlib figure
-    if isinstance(plot, plt.Figure):
-        st.pyplot(plot, bbox_inches='tight')
-    # If the plot is a JS/HTML plot (like shap.plots.beeswarm returns)
-    else:
-        shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-        st.components.v1.html(shap_html, height=height, scrolling=True)
-
 
 
 
@@ -48,7 +34,7 @@ st.markdown("<h3 style='color: hotpink; text-align: center;'>Notice what you nee
 
 df = pd.read_csv("Mental_Health_and_Social_Media_Balance_Dataset.csv")
 ### Intro Page
-page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", , "💐 The Garden", ])
+page = st.sidebar.selectbox("Select Page",["🌺 Introduction","🪻 Data Visualization","🌸 Modeling & Prediction", "💐 The Garden", ])
 ##Introduction Page
 if page == "🌺 Introduction":
 
