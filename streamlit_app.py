@@ -290,7 +290,7 @@ if page == "🌸 Modeling & Prediction":
         st.subheader("🌻 Weights & Biases Experiment Tracking")
         st.info("Click the button below to view your dashboard:")
 
-        st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/gaetan-brison/NYU?nw=nwusergaetanbrison")
+        st.link_button("🔗 Open W&B Dashboard", "https://wandb.ai/mrw9818-new-york-university/three_models_demo?nw=nwusermrw9818")
             
 
 
