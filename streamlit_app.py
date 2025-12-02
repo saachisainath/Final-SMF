@@ -323,27 +323,27 @@ if page == "🌸 Modeling & Prediction":
         # Build SHAP Explainer
         # ------------------------
         try:
-            explainer = shap.Explainer(model.predict, sample_X)
-            shap_values = explainer(sample_X)
+            # sample for speed
+            sample_X = X.sample(100, random_state=42)
         
-            # ------------------------
-            # GLOBAL IMPORTANCE PLOT
-            # ------------------------
+            # Transform the data BEFORE SHAP
+            X_transformed = model.named_steps["prep"].transform(sample_X)
+        
+            # use the underlying regressor, not the entire pipeline
+            explainer = shap.Explainer(model.named_steps["regressor"], X_transformed)
+            shap_values = explainer(X_transformed)
+        
+            # GLOBAL IMPORTANCE
             st.subheader("🌍 Global Feature Importance")
-            st.write("Shows which features matter most overall.")
-        
             st_shap(shap.plots.beeswarm(shap_values), height=600)
         
-            # ------------------------
             # INDIVIDUAL PREDICTION
-            # ------------------------
             st.subheader("🌸 Example Individual Prediction")
-            st.write("This waterfall plot explains ONE prediction in detail.")
-        
             st_shap(shap.plots.waterfall(shap_values[0]), height=600)
         
         except Exception as e:
             st.error(f"SHAP failed: {e}")
+
 
         
 
