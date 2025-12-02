@@ -299,64 +299,48 @@ if page == "🌸 Modeling & Prediction":
        return model
     if st.button("💐 Run Selected Model"):
         trained_model = run_model(model_choice)
+        # ------------------------
+        # 🌻 SHAP Model Explainability
+        # ------------------------
         st.subheader("🌻 SHAP Model Explainability")
         st.write("This section explains *why* the model predicts your happiness score.")
         
+        import shap
+        import streamlit.components.v1 as components
+        
+        # Take a sample for speed
+        sample_X = X.sample(100, random_state=42)
+        
+        # Transform numeric + categorical features
+        X_transformed = model.named_steps["prep"].transform(sample_X)
+        
+        # Use underlying regressor for SHAP
+        regressor = model.named_steps["regressor"]
+        
+        # Build SHAP explainer
+        explainer = shap.Explainer(regressor, X_transformed)
+        shap_values = explainer(X_transformed)
+        
         # ------------------------
-        # Prepare Data
+        # Global Feature Importance
         # ------------------------
-        target = "Happiness_Index(1-10)"
-        
-        X = df.drop(columns=[target])
-        y = df[target]
-        
-        categorical_cols = X.select_dtypes(exclude=[np.number]).columns.tolist()
-        numeric_cols = X.select_dtypes(include=[np.number]).columns.tolist()
-        
-        preprocessor = ColumnTransformer(
-            transformers=[
-                ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols),
-            ],
-            remainder="passthrough"
+        st.subheader("🌍 Global Feature Importance")
+        components.html(
+            shap.plots.beeswarm(shap_values, show=False).html(),
+            height=600,
+            scrolling=True
         )
         
         # ------------------------
-        # Fit linear model
+        # Individual Prediction Example
         # ------------------------
-        model = Pipeline(steps=[
-            ("prep", preprocessor),
-            ("regressor", LinearRegression())
-        ])
-        
-        model.fit(X, y)
-        
-        # Sample for speed
-        sample_X = X.sample(100, random_state=42)
-        
-        # ------------------------
-        # Build SHAP Explainer
-        # ------------------------
-        try:
-            # sample for speed
-            sample_X = X.sample(100, random_state=42)
-        
-            # Transform the data BEFORE SHAP
-            X_transformed = model.named_steps["prep"].transform(sample_X)
-        
-            # use the underlying regressor, not the entire pipeline
-            explainer = shap.Explainer(model.named_steps["regressor"], X_transformed)
-            shap_values = explainer(X_transformed)
-        
-            # GLOBAL IMPORTANCE
-            st.subheader("🌍 Global Feature Importance")
-            st_shap(shap.plots.beeswarm(shap_values), height=600)
-        
-            # INDIVIDUAL PREDICTION
-            st.subheader("🌸 Example Individual Prediction")
-            st_shap(shap.plots.waterfall(shap_values[0]), height=600)
-        
-        except Exception as e:
-            st.error(f"SHAP failed: {e}")
+        st.subheader("🌸 Example Individual Prediction")
+        components.html(
+            shap.plots.waterfall(shap_values[0], show=False).html(),
+            height=600,
+            scrolling=True
+        )
+
 
 
         
