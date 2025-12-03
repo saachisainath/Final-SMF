@@ -38,6 +38,8 @@ from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn import metrics as mt
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
 
 import xgboost as xgb
 
@@ -361,6 +363,36 @@ if page == "🌸 Modeling & Prediction":
         except Exception as e:
             st.error(f"SHAP failed: {e}")
 
+st.title("Feature Importance with Scikit-Learn")
+
+# Load dataset
+data = load_iris()
+X = pd.DataFrame(data.data, columns=data.feature_names)
+y = data.target
+
+# Train model
+model = RandomForestClassifier()
+model.fit(X, y)
+
+# Get feature importances
+importances = model.feature_importances_
+df_importance = (
+    pd.DataFrame({"feature": X.columns, "importance": importances})
+    .sort_values("importance", ascending=False)
+)
+
+st.subheader("Feature Importance Table")
+st.dataframe(df_importance)
+
+# Plot
+fig, ax = plt.subplots()
+ax.barh(df_importance["feature"], df_importance["importance"])
+ax.set_xlabel("Importance")
+ax.set_title("Random Forest Feature Importance")
+plt.gca().invert_yaxis()  # highest importance at the top
+
+st.subheader("Feature Importance Chart")
+st.pyplot(fig)
 
 
 
