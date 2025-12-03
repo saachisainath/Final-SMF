@@ -327,17 +327,14 @@ if page == "🌸 Modeling & Prediction":
 #########
 
         
-        X = df[['Age', 'Gender', 'Daily_Screen_Time(hrs)', 'Sleep_Quality(1-10)',
-           'Stress_Level(1-10)', 'Days_Without_Social_Media',
-           'Exercise_Frequency(week)', 'Social_Media_Platform','User_ID']]
-        y = df['Happiness_Index(1-10)']
-    
+     
 
         st.subheader("🌺 SHAP Model Explainability ")
         
         
         
         # Load dataset
+        data = df
         X = pd.DataFrame(df.data, columns=data.feature_names)
         y = df.target
         
