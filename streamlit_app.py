@@ -383,7 +383,7 @@ if page == "🌸 Modeling & Prediction":
         ax.set_title("Random Forest Feature Importance")
         plt.gca().invert_yaxis()
         
-        st.subheader("Feature Importance Chart")
+        st.subheader("🪻 Feature Importance Chart")
         st.pyplot(fig)
 
 
