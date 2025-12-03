@@ -288,7 +288,7 @@ if page == "🌸 Modeling & Prediction":
     )
     def run_model(model_name):
        model = MODELS[model_name]
-       st.write(f"### Training: {model_name}")
+       st.write(f"### 🪷 Training: {model_name}")
        model.fit(X_train, y_train)
        y_pred = model.predict(X_test)
        # ---- Accuracy ----
@@ -314,7 +314,7 @@ if page == "🌸 Modeling & Prediction":
        ax.set_ylabel("True Label")
        st.pyplot(fig)
        return model
-    if st.button("💐 Run Selected Model"):
+    if st.button("🌼 Run Selected Model"):
         trained_model = run_model(model_choice)
    
         
@@ -326,12 +326,7 @@ if page == "🌸 Modeling & Prediction":
 #SHAP CODE
 #########
 
-        
-     
-
-        st.subheader("🌺 SHAP Model Explainability ")
-        
-        
+        st.subheader("🌺 Model Explainability ")
         
         # Load dataset
                # Identify target column (adjust if needed)
@@ -370,7 +365,8 @@ if page == "🌸 Modeling & Prediction":
             .sort_values("importance", ascending=False)
         )
         
-        st.subheader("Feature Importance Table")
+        st.markdown("<h3 style='color: hotpink; '>Feature Importance Table</p>", unsafe_allow_html=True)
+
         st.dataframe(df_importance)
         
         # -----------------------------
