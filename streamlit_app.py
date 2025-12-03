@@ -334,7 +334,7 @@ if page == "🌸 Modeling & Prediction":
         
         
         # Load dataset
-        data = load_iris()
+        data = load_iris("Mental_Health_and_Social_Media_Balance_Dataset.csv")
         X = pd.DataFrame(data.data, columns=data.feature_names)
         y = data.target
         
