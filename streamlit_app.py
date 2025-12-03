@@ -334,15 +334,36 @@ if page == "🌸 Modeling & Prediction":
         
         
         # Load dataset
-        data = load_iris("Mental_Health_and_Social_Media_Balance_Dataset.csv")
-        X = pd.DataFrame(data.data, columns=data.feature_names)
-        y = data.target
+               # Identify target column (adjust if needed)
+        target = "Happiness_Index(1-10)"   # change to the actual column name in your CSV
         
-        # Train model
+        # Separate features and target
+        X = df.drop(columns=[target])
+        y = df[target]
+        
+        # Encode categorical features
+        label_encoders = {}
+        for col in X.columns:
+            if X[col].dtype == "object":
+                le = LabelEncoder()
+                X[col] = le.fit_transform(X[col].astype(str))
+                label_encoders[col] = le
+        
+        # Encode target if it is categorical
+        if y.dtype == "object":
+            y = LabelEncoder().fit_transform(y.astype(str))
+        
+        # -----------------------------
+        # 2. MODEL TRAINING
+        # -----------------------------
+        
         model = RandomForestClassifier()
         model.fit(X, y)
         
-        # Get feature importances
+        # -----------------------------
+        # 3. FEATURE IMPORTANCE
+        # -----------------------------
+        
         importances = model.feature_importances_
         df_importance = (
             pd.DataFrame({"feature": X.columns, "importance": importances})
@@ -352,12 +373,15 @@ if page == "🌸 Modeling & Prediction":
         st.subheader("Feature Importance Table")
         st.dataframe(df_importance)
         
-        # Plot
-        fig, ax = plt.subplots()
+        # -----------------------------
+        # 4. PLOT
+        # -----------------------------
+        
+        fig, ax = plt.subplots(figsize=(8, 6))
         ax.barh(df_importance["feature"], df_importance["importance"])
         ax.set_xlabel("Importance")
         ax.set_title("Random Forest Feature Importance")
-        plt.gca().invert_yaxis()  # highest importance at the top
+        plt.gca().invert_yaxis()
         
         st.subheader("Feature Importance Chart")
         st.pyplot(fig)
