@@ -334,7 +334,7 @@ if page == "🌸 Modeling & Prediction":
         
         
         # Load dataset
-        data = df
+        data = load_iris()
         X = pd.DataFrame(data.data, columns=data.feature_names)
         y = data.target
         
