@@ -335,64 +335,35 @@ if page == "🌸 Modeling & Prediction":
 
         st.subheader("🌺 SHAP Model Explainability ")
         
-        st.warning("Run a Prediction first so the model & data load here.")
-    
         
-        try:
-            st.write("Preparing SHAP explanations...")
         
-            # raw sample
-            sample = X.sample(100)
+        # Load dataset
+        X = pd.DataFrame(df.data, columns=data.feature_names)
+        y = df.target
         
-            # transform with preprocessing pipeline
-            sample_trans = trained_model.named_steps["preprocess"].transform(sample)
+        # Train model
+        model = RandomForestClassifier()
+        model.fit(X, y)
         
-            # prediction function on transformed features
-            predict_fn = lambda data: trained_model.named_steps["clf"].predict(data)
+        # Get feature importances
+        importances = model.feature_importances_
+        df_importance = (
+            pd.DataFrame({"feature": X.columns, "importance": importances})
+            .sort_values("importance", ascending=False)
+        )
         
-            # create SHAP explainer
-            explainer = shap.Explainer(predict_fn, sample_trans)
-            shap_values = explainer(sample_trans)
+        st.subheader("Feature Importance Table")
+        st.dataframe(df_importance)
         
-            st.subheader("SHAP Summary Plot")
-            st_shap(shap.plots.beeswarm(shap_values), height=600)
+        # Plot
+        fig, ax = plt.subplots()
+        ax.barh(df_importance["feature"], df_importance["importance"])
+        ax.set_xlabel("Importance")
+        ax.set_title("Random Forest Feature Importance")
+        plt.gca().invert_yaxis()  # highest importance at the top
         
-            st.subheader("First Prediction Waterfall")
-            st_shap(shap.plots.waterfall(shap_values[0]), height=600)
-        
-        except Exception as e:
-            st.error(f"SHAP failed: {e}")
-
-st.title("Feature Importance with Scikit-Learn")
-
-# Load dataset
-data = load_iris()
-X = pd.DataFrame(data.data, columns=data.feature_names)
-y = data.target
-
-# Train model
-model = RandomForestClassifier()
-model.fit(X, y)
-
-# Get feature importances
-importances = model.feature_importances_
-df_importance = (
-    pd.DataFrame({"feature": X.columns, "importance": importances})
-    .sort_values("importance", ascending=False)
-)
-
-st.subheader("Feature Importance Table")
-st.dataframe(df_importance)
-
-# Plot
-fig, ax = plt.subplots()
-ax.barh(df_importance["feature"], df_importance["importance"])
-ax.set_xlabel("Importance")
-ax.set_title("Random Forest Feature Importance")
-plt.gca().invert_yaxis()  # highest importance at the top
-
-st.subheader("Feature Importance Chart")
-st.pyplot(fig)
+        st.subheader("Feature Importance Chart")
+        st.pyplot(fig)
 
 
 
