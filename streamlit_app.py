@@ -335,8 +335,8 @@ if page == "🌸 Modeling & Prediction":
         
         # Load dataset
         data = df
-        X = pd.DataFrame(df.data, columns=data.feature_names)
-        y = df.target
+        X = pd.DataFrame(data.data, columns=data.feature_names)
+        y = data.target
         
         # Train model
         model = RandomForestClassifier()
