@@ -20,6 +20,36 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
+from sklearn import
+
+import base64
+import pickle
+import streamlit as st
+import pandas as pd
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pathlib import Path
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+from sklearn import metrics as mt
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+
+import xgboost as xgb
+
+from plotly import figure_factory
+from PIL import Image
+import shap
+from streamlit_shap import st_shap
+
+from streamlit_chat import message
+import openai
+import wandb
 
 
 
